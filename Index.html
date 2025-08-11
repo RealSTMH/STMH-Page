@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ReDoing Mods</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: #2f3a42;
+    font-family: 'Orbitron', monospace, sans-serif;
+    color: #eee;
+  }
+
+  /* Navbar */
+  header {
+    background: #2f3a42;
+    border-bottom: 2px solid #ffdc2e;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  header h1 {
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+  }
+
+  header small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #ccc;
+    text-align: center;
+    flex-basis: 100%;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav button {
+    background: #45515b;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-weight: 700;
+    color: #bbb;
+    cursor: pointer;
+    border-radius: 4px 4px 0 0;
+    transition: background 0.3s, color 0.3s;
+    letter-spacing: 0.05em;
+  }
+
+  nav button.active,
+  nav button:hover {
+    background: #2f3a42;
+    color: #ffdc2e;
+    border-bottom: 3px solid #ffdc2e;
+  }
+
+  /* Main grid */
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 2rem;
+  }
+
+  .welcome {
+    grid-column: 1 / -1;
+    background: #39444d;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+
+  .welcome h2 {
+    margin-top: 0;
+    font-weight: 500;
+  }
+
+  .card {
+    background: #39444d;
+    border-radius: 12px;
+    padding: 1.5rem 1.5rem 1.5rem 5.5rem;
+    position: relative;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  .card h3 {
+    margin-top: 0;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+
+  .card p {
+    line-height: 1.4;
+    font-weight: 400;
+    color: #ddd;
+  }
+
+  /* Card images */
+  .card img {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.7));
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 3rem;
+    background: #2f3a42;
+    color: #aaa;
+    text-align: center;
+    padding: 1rem 1rem 3rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Footer buttons */
+  .footer-buttons {
+    margin: 1rem 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-buttons a {
+    background: linear-gradient(145deg, #ffaa00, #ffbb22);
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 2rem;
+    color: #222;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow:
+      0 0 0 2px #ffaa00,
+      0 5px 0 #bb8800;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', monospace, sans-serif;
+  }
+
+  .footer-buttons a:hover {
+    background: linear-gradient(145deg, #ffcc33, #ffdd55);
+    box-shadow:
+      0 0 0 2px #ffcc33,
+      0 6px 0 #bb8800;
+    color: #111;
+  }
+
+  .footer-buttons a.steam {
+    background: #45515b;
+    box-shadow:
+      0 0 0 2px #303b43,
+      0 5px 0 #222a30;
+    color: #666;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* Background grid */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      linear-gradient(#2a3540 1px, transparent 1px),
+      linear-gradient(90deg, #2a3540 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (max-width: 600px) {
+    .card {
+      padding-left: 4rem;
+    }
+
+    .card img {
+      width: 48px;
+      height: 48px;
+      top: 1rem;
+      left: 1rem;
+    }
+
+    header h1 {
+      font-size: 1.2rem;
+    }
+
+    nav button {
+      font-size: 0.85rem;
+      padding: 0.5rem 0.8rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>REDOING MODS</h1>
+  <small>Scrap Mechanic Modding Group</small>
+  <nav>
+    <button class="active">HOME</button>
+    <button>OUR MODS</button>
+    <button>DOCUMENTATION</button>
+    <button>WIKI</button>
+    <button>ABOUT US</button>
+    <button>CONTACT</button>
+  </nav>
+</header>
+
+<main>
+  <section class="welcome" aria-label="Welcome message">
+    <h2>WELCOME TO REDOING MODS</h2>
+    <p>We create amazing mods for Scrap Mechanic to enhance your gaming experience. Our team is dedicated to bringing new features and improvements to the game.</p>
+  </section>
+
+  <article class="card" aria-labelledby="community-title">
+    <img src="https://i.imgur.com/dyTH2h7.png" alt="Community Icon" />
+    <h3 id="community-title">COMMUNITY</h3>
+    <p>Join our vibrant community of modders and players, fueled by passionate people. Share your creations, get help, and collaborate with others.</p>
+  </article>
+
+  <article class="card" aria-labelledby="mods-title">
+    <img src="https://i.imgur.com/5hTl7RH.png" alt="Mods Icon" />
+    <h3 id="mods-title">MODS</h3>
+    <p>Explore our collection of delicious high-quality mods designed to enhance your Scrap Mechanic experience.</p>
+  </article>
+
+  <article class="card" aria-labelledby="resources-title">
+    <img src="https://i.imgur.com/9NUPt6S.png" alt="Resources Icon" />
+    <h3 id="resources-title">RESOURCES</h3>
+    <p>Access tutorials, documentation, and tools to help you create your own amazing mods.</p>
+  </article>
+</main>
+
+<footer>
+  <p>© 2025 ReDoing Mods. All rights reserved.</p>
+  <div class="footer-buttons">
+    <a href="#" target="_blank" rel="noopener noreferrer">DISCORD</a>
+    <a href="#" target="_blank" rel="noopener noreferrer">GITHUB</a>
+    <a href="#" class="steam" aria-disabled="true">STEAM WORKSHOP</a>
+  </div>
+</footer>
+
+<script>
+  // Simple navigation active button toggle
+  const buttons = document.querySelectorAll('nav button');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
+
